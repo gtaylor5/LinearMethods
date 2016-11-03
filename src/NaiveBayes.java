@@ -5,17 +5,18 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class NaiveBayes {
-	
 
-	String dataSetName;
-
+	String dataSetName; //data set name to be trained.
 	
-	ArrayList<int[]> trainingData = new ArrayList<int[]>();
-	ArrayList<int[]> testData = new ArrayList<int[]>();
-	ArrayList<int[]> booleanizedFile = new ArrayList<int[]>();
-	ArrayList<Integer> classNumbers = new ArrayList<Integer>();
-	ArrayList<Classification> classifications = new ArrayList<Classification>();
-	HashMap<Integer, Integer> classCounts = new HashMap<Integer, Integer>();
+	ArrayList<int[]> trainingData = new ArrayList<int[]>(); //usable training data
+	ArrayList<int[]> testData = new ArrayList<int[]>(); //usable test data
+	ArrayList<Integer> classNumbers = new ArrayList<Integer>(); // class values
+	ArrayList<Classification> classifications = new ArrayList<Classification>(); //classifications 
+	HashMap<Integer, Integer> classCounts = new HashMap<Integer, Integer>(); //occurrences of each class
+	
+	/************************************************************
+	Constructor
+	************************************************************/
 	
 	public NaiveBayes(String dataSetName){
 		this.dataSetName = dataSetName;
@@ -99,6 +100,10 @@ public class NaiveBayes {
 		System.out.println();
 	}
 	
+	/************************************************************
+	Counts all of the classes in the training set. 
+	************************************************************/
+	
 	public void countClasses(){
 		//handle special cases.
 		for(int i = 0; i < trainingData.size(); i++){
@@ -112,6 +117,11 @@ public class NaiveBayes {
 		}
 		//printClassCounts(); // prints class counts.
 	}
+	
+	/************************************************************
+	Fills the training file based on the index that is to be skipped.
+	Used specifically for cross validation.
+	************************************************************/
 	
 	void fillTrainFile(int indexToSkip) throws IOException{
 		for(int i = 1; i < 6; i++){
@@ -128,6 +138,10 @@ public class NaiveBayes {
 			fileScanner.close();
 		}
 	}
+	
+	/************************************************************
+	Fills test file similarly to fillTrainFile.
+	************************************************************/
 	
 	void fillTestFile(int indexToSkip) throws IOException{
 		Scanner fileScanner = new Scanner(new File("Data/"+dataSetName+"/Set"+indexToSkip+".txt"));

@@ -1,5 +1,9 @@
 import java.util.ArrayList;
 
+/************************************************************
+Helper class for Naive Bayes.
+************************************************************/
+
 public class Classification {
 	
 	int classNumber;
@@ -49,7 +53,8 @@ public class Classification {
 					attributeCount++;
 				}
 			}
-			attributeProbabilities[i] = ((double)(attributeCount/((double)classFrequency)) == 0) ? (double)((attributeCount+(m*p))/((double)(classFrequency+1))) : (double)(attributeCount/((double)classFrequency));
+			attributeProbabilities[i] = ((double)(attributeCount/((double)classFrequency)) == 0) ?
+					(double)((attributeCount+(m*p))/((double)(classFrequency+1))) : (double)(attributeCount/((double)classFrequency));
 		}
 	}
 }

@@ -31,6 +31,10 @@ public class DataHandler {
 		h.processData();
 	}
 	
+	/************************************************************
+	Method to process all of the data.
+	************************************************************/
+	
 	public void processData() throws IOException{
 		for(int i = 0 ; i < dataSets.length; i++){
 			PreProcessTask task = new PreProcessTask(dataSets[i]);
@@ -78,6 +82,10 @@ public class DataHandler {
 		fileScanner.close();
 	}
 	
+	/************************************************************
+	Splits data into 5 equal portions for cross validation.
+	************************************************************/
+	
 	public void splitData(String dataSetName) throws IOException{
 		int originalSize = fileAsArray.size();
 		for(int i = 0; i < 5; i++){ // number of files
@@ -115,6 +123,10 @@ public class DataHandler {
 		writeToFile(validationSet, dataSetName);
 	}
 	
+	/************************************************************
+	Count occurrences of each class.
+	************************************************************/
+	
 	public void countClasses(){
 		//handle special cases.
 		for(int i = 0; i < fileAsArray.size(); i++){
@@ -128,6 +140,10 @@ public class DataHandler {
 		}
 		//printClassCounts(); // prints class counts.
 	}
+	
+	/************************************************************
+	Writes to file. Used to create 5 different equally sized sets.
+	************************************************************/
 	
 	public void writeToFile(int fileNum, ArrayList<String[]> array, String dataSetName) throws IOException{
 		String path = "Data/"+dataSetName+"/Set"+(fileNum+1)+".txt";
@@ -144,6 +160,10 @@ public class DataHandler {
 		writer.close();
 	}
 	
+	/************************************************************
+	Writes to validation set.
+	************************************************************/
+	
 	public void writeToFile(ArrayList<String[]> array, String dataSetName) throws IOException{
 		String path = "Data/"+dataSetName+"/validationSet.txt";
 		File file = new File(path);
@@ -158,6 +178,10 @@ public class DataHandler {
 		}
 		writer.close();
 	}
+	
+	/************************************************************
+	Converts array list of integer arrays to a string arrays.
+	************************************************************/
 	
 	void convertToString(ArrayList<int[]> list){
 		for(int[] arr : list){

@@ -6,16 +6,19 @@ public class LogisticLearner {
 	
 	Double eta = 0.0; //Tunable parameter for gradient descent
 	ClassInfo[] classes;
-	HashMap<Integer, Integer> classCounts = new HashMap<Integer, Integer>();
-	ArrayList<int[]> trainingData = new ArrayList<int[]>();
-	ArrayList<int[]> testData = new ArrayList<int[]>();
-	ArrayList<int[]> validationSet = new ArrayList<int[]>();
-	String dataSetName;
-	Integer dataDimension = 0;
+	HashMap<Integer, Integer> classCounts = new HashMap<Integer, Integer>(); //occurrences of each class
+	ArrayList<int[]> trainingData = new ArrayList<int[]>(); //training data as usable arraylist
+	ArrayList<int[]> testData = new ArrayList<int[]>(); //test data as usable arraylist
+	ArrayList<int[]> validationSet = new ArrayList<int[]>(); //validation set as usable arraylist
+	String dataSetName; //the name of the dataset being tested/trained
 	
 	public LogisticLearner(String name){
 		this.dataSetName = name;
 	}
+	
+	/************************************************************
+	Tester method.
+	************************************************************/
 	
 	public static void main(String[] args) throws IOException {
 		String[] dataSets = {"SoyBean","Iris","GlassID","BreastCancer","VoteCount"};
@@ -60,8 +63,7 @@ public class LogisticLearner {
 	************************************************************/
 	
 	/************************************************************
-	NEED TO CALCULATE PROBABILITIES FOR K-1 CLASSES. THE KTH
-	CLASS IS THE SUM OF ALL THE PROBABILITIES
+	Method to test logistic learner. Uses test data.
 	************************************************************/
 	
 	public double test(){
@@ -76,87 +78,96 @@ public class LogisticLearner {
 				c.dotProduct(arr);
 			}
 			for(ClassInfo c : classes){
-				c.probability = Math.exp(c.output);
+				c.probability = Math.exp(c.output)/getDenominator(); //calculate class probability.
 				if(c.probability > max){
 					max = c.probability;
-					classification = c.classVal;
+					classification = c.classVal; //set classification.
 				}
 			}
 			if(classification == arr[arr.length-1]){
-				performance++;
+				performance++;//incrememnt performance if class values match.
 			}
 		}
 		return (performance / ((double) testData.size()));
 	}
 	
+	/************************************************************
+	This is the gradient descent method for learning the weights
+	for logisic regression.
+	************************************************************/
 	
 	public double gradientDescent(){
 		
-		initializeWeights();
-		ClassInfo[] classesCopy = new ClassInfo[classes.length];
+		initializeWeights(); //initialize weights of classes. (see below)
+		ClassInfo[] classesCopy = new ClassInfo[classes.length]; //initialize copy of classes
 		double performance = Double.MIN_VALUE;
-		double currentPerformance = verifyPerformance();
-		while(currentPerformance >= performance){
-			performance = currentPerformance;
+		double currentPerformance = verifyPerformance(); // set initial performance value based on random class weights
+		while(currentPerformance >= performance){ //stopping condition.
+			performance = currentPerformance; //update performance
 			//reset deltas of each class
 			for(ClassInfo c: classes){
-				c.resetDeltas();
+				c.resetDeltas(); // reset the delta_weights to an initial value.
 			}
 			
 			//MAIN LOOP
 			
-			for(int[] arr : trainingData){
+			for(int[] arr : trainingData){ // iterate through each training example
 				
 				for(ClassInfo c : classes){
-					c.resetOutput(); // set o = 0
+					c.resetOutput(); // set "o" = 0
 				}
 				
 				//set o for each class
 				for(ClassInfo c : classes){
-					c.dotProduct(arr); // sets o for each class
+					c.dotProduct(arr); // sets "o" for each class
 				}
 				
 				//set probability for each class
 				for(ClassInfo c: classes){
-					c.probability = Math.exp(c.output + c.w0)/(getDenominator());
+					c.probability = Math.exp(c.output + c.w0)/(getDenominator()); // probability of each class given the training example
 				}
 				
 				//calculate and set deltas
 				for(ClassInfo c : classes){
-					if(c.classVal == arr[arr.length-1]){
+					if(c.classVal == arr[arr.length-1]){ // implementation of konecker delta.
 						for(int i = 0; i < arr.length-1; i++){
 							c.deltaWeights[i] = c.deltaWeights[i] + (1 - c.probability)*((double)arr[i]);
 						}
 						c.deltaW0 = c.deltaW0 + (1-c.probability);
 					}else{
 						for(int i = 0; i < arr.length-1; i++){
-							c.deltaWeights[i] = c.deltaWeights[i] + (0 - c.probability)*((double)arr[i]);
+							c.deltaWeights[i] = c.deltaWeights[i] + (0 - c.probability)*((double)arr[i]); //penalize if classes dont match
 						}
 						c.deltaW0 = c.deltaW0 + (0-c.probability);
 					}
 				}
 			}
 			//set weights
-			classesCopy = classes;
+			classesCopy = classes; // save class weights from previous iteration before changing them.
 			for(ClassInfo c : classes){
 				for(int i = 0; i < c.weights.length; i++){
-					c.weights[i] = c.weights[i] + eta*c.deltaWeights[i];
+					c.weights[i] = c.weights[i] + eta*c.deltaWeights[i]; // update weights. 
 				}
 				c.w0 = c.w0 + eta*c.deltaW0;
 			}
 			
 			//test performance
-			currentPerformance = verifyPerformance();
-			if(currentPerformance > .8){
+			currentPerformance = verifyPerformance(); // calculate new performance based on validation set.
+			if(currentPerformance > .8){ //if the performance is above 80% break.
 				break;
-			}else if(currentPerformance < performance){
+			}else if(currentPerformance < performance){ //otherwise use the old class weights as the weights.
 				classes = classesCopy;
 				break;
 			}
 		}
 		return currentPerformance;
-		
 	}
+	
+	/************************************************************
+	This method is used to help gradient descent stop early. This
+	calculates the performance of the weight set when a validation
+	set is applied. Identical to the test method above.
+	************************************************************/
 	
 	double verifyPerformance(){
 		double performance = 0;
@@ -184,6 +195,9 @@ public class LogisticLearner {
 		return (performance / ((double) validationSet.size()));
 	}
 	
+	/************************************************************
+	Initialize classes to be the class value.
+	************************************************************/
 	
 	public void initializeClasses(){
 		classes = new ClassInfo[classCounts.size()];
@@ -195,6 +209,10 @@ public class LogisticLearner {
 		}
 	}
 	
+	/************************************************************
+	Initializes the weights of each class. See ClassInfo.setWeights().
+	************************************************************/
+	
 	void initializeWeights(){
 		for(int i = 0; i < classes.length; i++){
 			classes[i].weights = new double[trainingData.get(0).length-1];
@@ -202,6 +220,11 @@ public class LogisticLearner {
 			classes[i].setWeights();
 		}
 	}
+	
+	/************************************************************
+	This method helps with calculating the probability of a class
+	given a data point. This calculates the denomenator.
+	************************************************************/
 	
 	double getDenominator(){
 		double sum = 0;
@@ -211,13 +234,6 @@ public class LogisticLearner {
 		return sum;
 	}
 	
-	Double sigmoid(Double output, Integer classNumber){
-		double value = 1;
-		value /= (1+Math.exp((-1.0)*(output)));
-		return value;
-	}
-	
-	
 	
 	/************************************************************
 	
@@ -225,6 +241,10 @@ public class LogisticLearner {
 	
 	************************************************************/
 	
+	/************************************************************
+	Counts all of the classes in the training set. Similar method
+	in NaiveBayes and other homeworks.
+	************************************************************/
 	
 	public void countClasses(){
 		//handle special cases.
@@ -239,9 +259,14 @@ public class LogisticLearner {
 		}
 	}
 	
+	/************************************************************
+	Fills the training file based on the index that is to be skipped.
+	Used specifically for cross validation.
+	************************************************************/
+	
 	void fillTrainFile(int indexToSkip) throws IOException{
 		for(int i = 1; i < 6; i++){
-			if(i == indexToSkip) continue;
+			if(i == indexToSkip) continue; // skip file at index.
 			Scanner fileScanner = new Scanner(new File("Data/"+dataSetName+"/Set"+i+".txt"));
 			while(fileScanner.hasNextLine()){
 				String[] arr = fileScanner.nextLine().split(" ");
@@ -256,6 +281,9 @@ public class LogisticLearner {
 		}
 	}
 	
+	/************************************************************
+	Fills test file similarly to fillTrainFile.
+	************************************************************/
 	
 	void fillTestFile(int indexToSkip) throws IOException{
 		Scanner fileScanner = new Scanner(new File("Data/"+dataSetName+"/Set"+indexToSkip+".txt"));
@@ -269,6 +297,10 @@ public class LogisticLearner {
 		}
 		fileScanner.close();
 	}
+	
+	/************************************************************
+	Fills the validation set.
+	************************************************************/
 	
 	void fillValidationSet() throws IOException{
 		Scanner fileScanner = new Scanner(new File("Data/"+dataSetName+"/validationSet.txt"));
@@ -284,16 +316,12 @@ public class LogisticLearner {
 		fileScanner.close();
 	}
 	
-	void printArrayList(ArrayList<Double> list){
-		for(Double val: list){
-			System.out.print(val + " ");
-		}
-		System.out.println();
-	}
-	
 	/************************************************************
 	
-	Helper Class
+	Helper Class.
+	
+	This class allows for easy iteration and operations on all 
+	of the classes.
 	
 	************************************************************/
 	
@@ -308,9 +336,14 @@ public class LogisticLearner {
 		
 		public ClassInfo(Integer val){
 			this.classVal = val;
-			w0 = .5;
-			deltaW0 = .5;
+			w0 = .5; // tunable
+			deltaW0 = .5; //tunable
 		}
+		
+		/************************************************************
+		Dots an input vector with the weights. Returns the absolute 
+		value.
+		************************************************************/
 		
 		void dotProduct(int[] arr){
 			for(int i = 0; i < weights.length; i++){
@@ -319,9 +352,17 @@ public class LogisticLearner {
 			output = Math.abs(output);
 		}
 		
+		/************************************************************
+		Resets output to 0.
+		************************************************************/
+		
 		void resetOutput(){
 			output = 0;
 		}
+		
+		/************************************************************
+		Resets deltas to 0 and returns constants to initial values.
+		************************************************************/
 		
 		void resetDeltas(){
 			for(int i = 0; i < deltaWeights.length; i++){
@@ -331,32 +372,15 @@ public class LogisticLearner {
 			w0 = .5;
 		}
 		
+		/************************************************************
+		Sets random weights. The performance of the algorithm depends
+		heavily on the distribution of the weights.
+		************************************************************/
+		
 		void setWeights(){
 			for(int i = 0; i < weights.length; i++){
 				weights[i] = (0 + Math.random()*0.1);
 			}
 		}
-		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
