@@ -242,8 +242,7 @@ public class LogisticLearner {
 	************************************************************/
 	
 	/************************************************************
-	Counts all of the classes in the training set. Similar method
-	in NaiveBayes and other homeworks.
+	Counts all of the classes in the training set. 
 	************************************************************/
 	
 	public void countClasses(){
