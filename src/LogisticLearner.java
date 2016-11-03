@@ -317,7 +317,7 @@ public class LogisticLearner {
 	
 	/************************************************************
 	
-	Helper Class.
+	Helper Class. 
 	
 	This class allows for easy iteration and operations on all 
 	of the classes.
