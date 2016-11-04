@@ -34,8 +34,13 @@ public class AdalineNeuron {
     ************************************************************/
     
     public void train(){
+        double[] weightsCopy = weights;
         initializeWeights(); // intialize weights to random number vector
-        while(true){
+        double performance = Double.MIN_VALUE;
+        double currentPerformance = verifyPerformance();
+        while(currentPerformance > performance){
+            performance = currentPerformance;
+            weightsCopy = weights;
             for(int[] arr : trainingData){
                double y = sgn(weights, arr);
                 if(arr[arr.length-1] == classVal){
@@ -52,10 +57,12 @@ public class AdalineNeuron {
                     }
                 }
             }
-            if(verifyPerformance() >= .8){
-                break;
+            currentPerformance = verifyPerformance();
+            if(currentPerformance == 1){
+                return;
             }
         }
+        weights = weightsCopy;
     }
     
     double getSumOfErrors(double[] err){
