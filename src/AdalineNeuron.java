@@ -35,15 +35,25 @@ public class AdalineNeuron {
     
     public void train(){
         initializeWeights(); // intialize weights to random number vector
-        for(int i = 0; i < 1; i++){
+        while(true){
             for(int[] arr : trainingData){
+               double y = sgn(weights, arr);
                 if(arr[arr.length-1] == classVal){
-                    double output = dot(weights, arr);
-                    double error = (classVal - output);
-                    for(int j = 0; j < weights.length; j++){
-                        weights[i] += eta*dotScalar(error, arr);
+                    double target = 1;
+                    double error = (target - y);
+                    for(int i = 0; i < weights.length; i++){
+                        weights[i] += eta*error*((double)arr[i]);
+                    }
+                }else{
+                    double target = -1;
+                    double error = (target - y);
+                    for(int i = 0; i < weights.length; i++){
+                        weights[i] += eta*error*((double)arr[i]);
                     }
                 }
+            }
+            if(verifyPerformance() >= .8){
+                break;
             }
         }
     }
