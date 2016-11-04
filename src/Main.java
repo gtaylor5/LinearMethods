@@ -4,11 +4,15 @@ import java.util.*;
 
 class Main{
 
-      ArrayList<int[]> trainingData = new ArrayList<int[]>(); //training data as usable arraylist
+    ArrayList<int[]> trainingData = new ArrayList<int[]>(); //training data as usable arraylist
     ArrayList<int[]> testData = new ArrayList<int[]>(); //test data as usable arraylist
     ArrayList<int[]> validationSet = new ArrayList<int[]>(); //validation set as usable arraylist
     String dataSetName; //the name of the dataset being tested/trained
-  
+      
+    ArrayList<Double> naivePerformance = new ArrayList<Double>();
+    ArrayList<Double> logisticPerformance = new ArrayList<Double>();
+    ArrayList<Double> perceptronPerformance = new ArrayList<Double>();
+    ArrayList<Double> adalinePerformance = new ArrayList<Double>();
   
     public Main(String name){
       this.dataSetName = name;
@@ -48,6 +52,7 @@ class Main{
       System.out.printf("Logistic : %.2f", l.test()*100);
       System.out.print(" %");
       System.out.println();
+      logisticPerformance.add(l.test*100);
     
       //Naive Bayes
     
@@ -58,7 +63,7 @@ class Main{
       for(int key : b.classCounts.keySet()){
         b.trainNaiveBayes(b.trainingData, key);
       }
-      b.testNaiveBayes(testData);
+      naivePerformace.add(b.testNaiveBayes(testData));
     
       //Perceptron Learning 
     
@@ -70,7 +75,7 @@ class Main{
       p.countClasses();
       p.setNeurons();
       p.trainPerceptron();
-      p.testPerceptron();
+      perceptronPerformance.add(p.testPerceptron());
     
       //Adaline Learning
     
@@ -82,7 +87,7 @@ class Main{
       a.countClasses();
       a.setNeurons();
       a.trainAdaline();
-      a.testAdaline();
+      adalinePerformance.add(a.testAdaline());
     }
 
     /************************************************************
