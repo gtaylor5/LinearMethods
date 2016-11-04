@@ -21,8 +21,8 @@ public class AdalineNeuron {
     ************************************************************/
     
     int test(int[] arr){
-        double val = dot(weights, arr);
-        //System.out.println(val + " " + classVal + " " + arr[arr.length-1]);
+        double val = sgn(weights, arr);
+       // System.out.println(val + " " + classVal + " " + arr[arr.length-1]);
         if(val > 0 && classVal == arr[arr.length-1]){ // True positive only
             return 1;
         }
@@ -34,8 +34,8 @@ public class AdalineNeuron {
     ************************************************************/
     
     public void train(){
-        double[] weightsCopy = weights;
         initializeWeights(); // intialize weights to random number vector
+        double[] weightsCopy = weights;
         double performance = Double.MIN_VALUE;
         double currentPerformance = verifyPerformance();
         while(currentPerformance > performance){
