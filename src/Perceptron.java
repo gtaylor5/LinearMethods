@@ -35,7 +35,7 @@ public class Perceptron {
     Returns performance of perceptron.
     ************************************************************/
     
-    public void testPerceptron(){
+    public double testPerceptron(){
         double performance = 0;
         for(int[] val : testData){
             for(int i = 0; i < neurons.length; i++){
@@ -47,6 +47,7 @@ public class Perceptron {
         System.out.printf("Perceptron : %.2f",performance*100/((double)testData.size()));
         System.out.print(" %");
         System.out.println();
+        return performance*100/((double)testData.size());
     }
     
     /************************************************************
