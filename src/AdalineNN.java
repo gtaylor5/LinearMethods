@@ -47,7 +47,7 @@ public class AdalineNN {
                 }
             }
         }
-        System.out.printf("%.2f",performance*100/((double)testData.size()));
+        System.out.printf("Adaline : %.2f",performance*100/((double)testData.size()));
         System.out.print(" %");
         System.out.println();
     }

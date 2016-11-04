@@ -44,7 +44,7 @@ public class Perceptron {
                 }
             }
         }
-        System.out.printf("%.2f",performance*100/((double)testData.size()));
+        System.out.printf("Perceptron : %.2f",performance*100/((double)testData.size()));
         System.out.print(" %");
         System.out.println();
     }

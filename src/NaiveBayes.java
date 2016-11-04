@@ -96,7 +96,8 @@ public class NaiveBayes {
 				totalCount++;
 			}
 		}
-		System.out.printf("%.2f",(count/totalCount)*100);
+		System.out.printf("Naive Bayes : %.2f",(count/totalCount)*100);
+        System.out.print(" %");
 		System.out.println();
 	}
 	
