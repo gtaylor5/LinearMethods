@@ -15,30 +15,11 @@ public class AdalineNN {
     
     
     
-    public static void main(String[] args) throws IOException {
-        String[] dataSets = {"SoyBean","Iris","GlassID","BreastCancer","VoteCount"};
-        for(int j = 0; j < 5; j++){
-            System.out.println(dataSets[j] + ": ");
-            for(int i = 1; i < 6; i++){
-                AdalineNN a = new AdalineNN();
-                a.dataSetName = dataSets[j];
-                a.fillTrainFile(i);
-                a.fillTestFile(i);
-                a.fillValidationSet();
-                a.countClasses();
-                a.setNeurons();
-                a.trainAdaline();
-                a.testAdaline();
-            }
-            System.out.println("-------------------------");
-        }
-    }
-    
     /************************************************************
     Returns performance of perceptron.
     ************************************************************/
     
-    public void testAdaline(){
+    public double testAdaline(){
         double performance = 0;
         for(int[] val : testData){
             for(int i = 0; i < neurons.length; i++){
@@ -50,6 +31,7 @@ public class AdalineNN {
         System.out.printf("Adaline : %.2f",performance*100/((double)testData.size()));
         System.out.print(" %");
         System.out.println();
+        return performance*100/((double)testData.size());
     }
     
     /************************************************************
