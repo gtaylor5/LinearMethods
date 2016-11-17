@@ -44,9 +44,6 @@ public class Perceptron {
                 }
             }
         }
-        System.out.printf("Perceptron : %.2f",performance*100/((double)testData.size()));
-        System.out.print(" %");
-        System.out.println();
         return performance*100/((double)testData.size());
     }
     
@@ -72,6 +69,17 @@ public class Perceptron {
         for(Integer key: classCounts.keySet()){
             neurons[i] = new Neuron(key, trainingData, validationData);
             i++;
+        }
+    }
+    
+    public void printWeights(){
+        for(Neuron n : neurons){
+            Main.writer2.print("Weights for Class " + n.classVal + " : ");
+            for(double w : n.weights){
+                Main.writer2.print(w + " ");
+            }
+            Main.writer2.println();
+            Main.writer2.println();
         }
     }
     

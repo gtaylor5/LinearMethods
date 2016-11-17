@@ -28,18 +28,16 @@ public class AdalineNN {
                 }
             }
         }
-        System.out.printf("Adaline : %.2f",performance*100/((double)testData.size()));
-        System.out.print(" %");
-        System.out.println();
         return performance*100/((double)testData.size());
     }
     
     /************************************************************
     For each of the neurons in the perceptron train them based on
     their class value.
+     * @throws IOException 
     ************************************************************/
     
-    public void trainAdaline(){
+    public void trainAdaline() throws IOException{
         for(int i = 0; i < neurons.length; i++){
             neurons[i].train();
         }
@@ -56,6 +54,17 @@ public class AdalineNN {
         for(Integer key: classCounts.keySet()){
             neurons[i] = new AdalineNeuron(key, trainingData, validationData);
             i++;
+        }
+    }
+    
+    public void printWeights(){
+        for(AdalineNeuron n : neurons){
+            Main.writer2.print("Weights for Class " + n.classVal + " : ");
+            for(double w : n.weights){
+                Main.writer2.print(w + " ");
+            }
+            Main.writer2.println();
+            Main.writer2.println();
         }
     }
     

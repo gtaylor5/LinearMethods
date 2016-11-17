@@ -1,0 +1,459 @@
+Data set: BreastCancer
+
+Statistics for: Adaline
+Mean Performance: 94.96062992125984
+Variance of Performance: 0.8928017856035716
+Standard Deviation: 0.9448818897637797
+Confidence Interval: 94.74934790763781 to 95.17191193488186
+
+Statistics for: Perceptron
+Mean Performance: 93.38582677165354
+Variance of Performance: 1.3888027776055503
+Standard Deviation: 1.1784747674878535
+Confidence Interval: 93.12231180266643 to 93.64934174064065
+
+Statistics for: Naive
+Mean Performance: 97.00787401574803
+Variance of Performance: 0.8432016864033743
+Standard Deviation: 0.9182601409205206
+Confidence Interval: 96.80254480613534 to 97.21320322536072
+
+Statistics for: Logistic
+Mean Performance: 84.09448818897637
+Variance of Performance: 5.0592101184202205
+Standard Deviation: 2.249268796391445
+Confidence Interval: 83.59153639613633 to 84.59743998181641
+
+----------------------------------------
+Data set: BreastCancer
+
+Statistics for: Adaline
+Mean Performance: 94.01574803149606
+Variance of Performance: 5.604811209622429
+Standard Deviation: 2.3674482485626647
+Confidence Interval: 93.48637050979616 to 94.54512555319596
+
+Statistics for: Perceptron
+Mean Performance: 93.54330708661418
+Variance of Performance: 6.05121210242419
+Standard Deviation: 2.4599211577658724
+Confidence Interval: 92.99325199380873 to 94.09336217941963
+
+Statistics for: Naive
+Mean Performance: 97.00787401574803
+Variance of Performance: 0.8432016864033743
+Standard Deviation: 0.9182601409205206
+Confidence Interval: 96.80254480613534 to 97.21320322536072
+
+Statistics for: Logistic
+Mean Performance: 84.25196850393702
+Variance of Performance: 9.176018352036689
+Standard Deviation: 3.029194340420682
+Confidence Interval: 83.57462005771319 to 84.92931695016085
+
+----------------------------------------
+Data set: BreastCancer
+
+Statistics for: Adaline
+Mean Performance: 94.80314960629921
+Variance of Performance: 5.108810217620446
+Standard Deviation: 2.2602677314027306
+Confidence Interval: 94.29773837682264 to 95.3085608357758
+
+Statistics for: Perceptron
+Mean Performance: 94.48818897637796
+Variance of Performance: 1.7360034720069468
+Standard Deviation: 1.317574844935553
+Confidence Interval: 94.193570284506 to 94.78280766824992
+
+Statistics for: Naive
+Mean Performance: 97.00787401574803
+Variance of Performance: 0.8432016864033743
+Standard Deviation: 0.9182601409205206
+Confidence Interval: 96.80254480613534 to 97.21320322536072
+
+Statistics for: Logistic
+Mean Performance: 84.09448818897638
+Variance of Performance: 5.0592101184202205
+Standard Deviation: 2.249268796391445
+Confidence Interval: 83.59153639613635 to 84.59743998181642
+
+----------------------------------------
+Data set: BreastCancer
+
+Statistics for: Adaline
+Mean Performance: 94.33070866141733
+Variance of Performance: 2.8272056544113093
+Standard Deviation: 1.681429645989183
+Confidence Interval: 93.9547295626358 to 94.70668776019886
+
+Statistics for: Perceptron
+Mean Performance: 93.7007874015748
+Variance of Performance: 3.96800793601588
+Standard Deviation: 1.9919859276651228
+Confidence Interval: 93.25536580712658 to 94.14620899602302
+
+Statistics for: Naive
+Mean Performance: 97.00787401574803
+Variance of Performance: 0.8432016864033743
+Standard Deviation: 0.9182601409205206
+Confidence Interval: 96.80254480613534 to 97.21320322536072
+
+Statistics for: Logistic
+Mean Performance: 84.25196850393701
+Variance of Performance: 14.632029264058534
+Standard Deviation: 3.825183559524763
+Confidence Interval: 83.39663145738581 to 85.1073055504882
+
+----------------------------------------
+Data set: BreastCancer
+
+Statistics for: Adaline
+Mean Performance: 95.11811023622047
+Variance of Performance: 5.555211110422222
+Standard Deviation: 2.3569495349757115
+Confidence Interval: 94.59108029824625 to 95.6451401741947
+
+Statistics for: Perceptron
+Mean Performance: 94.48818897637794
+Variance of Performance: 3.4720069440138985
+Standard Deviation: 1.8633322151494882
+Confidence Interval: 94.07153522660398 to 94.9048427261519
+
+Statistics for: Naive
+Mean Performance: 97.00787401574803
+Variance of Performance: 0.8432016864033743
+Standard Deviation: 0.9182601409205206
+Confidence Interval: 96.80254480613534 to 97.21320322536072
+
+Statistics for: Logistic
+Mean Performance: 82.36220472440945
+Variance of Performance: 4.116808233616455
+Standard Deviation: 2.0289919254685205
+Confidence Interval: 81.90850833729488 to 82.81590111152403
+
+----------------------------------------
+Data set: SoyBean
+
+Statistics for: Adaline
+Mean Performance: 98.0
+Variance of Performance: 16.0
+Standard Deviation: 4.0
+Confidence Interval: 97.10557280900008 to 98.89442719099992
+
+Statistics for: Perceptron
+Mean Performance: 96.0
+Variance of Performance: 64.0
+Standard Deviation: 8.0
+Confidence Interval: 94.21114561800017 to 97.78885438199983
+
+Statistics for: Naive
+Mean Performance: 92.5
+Variance of Performance: 100.0
+Standard Deviation: 10.0
+Confidence Interval: 90.26393202250021 to 94.73606797749979
+
+Statistics for: Logistic
+Mean Performance: 63.0
+Variance of Performance: 1088.5
+Standard Deviation: 32.992423372647245
+Confidence Interval: 55.62266985963079 to 70.37733014036921
+
+----------------------------------------
+Data set: Iris
+
+Statistics for: Adaline
+Mean Performance: 90.39682539682539
+Variance of Performance: 42.017300747459444
+Standard Deviation: 6.482075342624416
+Confidence Interval: 88.94738928668704 to 91.84626150696374
+
+Statistics for: Perceptron
+Mean Performance: 86.05820105820105
+Variance of Performance: 34.010805968477904
+Standard Deviation: 5.8318784253855895
+Confidence Interval: 84.75415339863339 to 87.36224871776871
+
+Statistics for: Naive
+Mean Performance: 91.87830687830687
+Variance of Performance: 35.354553343971325
+Standard Deviation: 5.945969504123893
+Confidence Interval: 90.5487476779707 to 93.20786607864305
+
+Statistics for: Logistic
+Mean Performance: 67.46031746031747
+Variance of Performance: 432.854623330814
+Standard Deviation: 20.80515857499803
+Confidence Interval: 62.808142574681646 to 72.1124923459533
+
+----------------------------------------
+Data set: GlassID
+
+Statistics for: Adaline
+Mean Performance: 62.857142857142854
+Variance of Performance: 59.72073039742213
+Standard Deviation: 7.727918891747126
+Confidence Interval: 61.12912766048771 to 64.585158053798
+
+Statistics for: Perceptron
+Mean Performance: 61.80451127819549
+Variance of Performance: 121.69144666176717
+Standard Deviation: 11.031384621241667
+Confidence Interval: 59.33781868829128 to 64.2712038680997
+
+Statistics for: Naive
+Mean Performance: 56.74185463659148
+Variance of Performance: 4.788914642495955
+Standard Deviation: 2.188358892525619
+Confidence Interval: 56.25252271230614 to 57.23118656087683
+
+Statistics for: Logistic
+Mean Performance: 39.14786967418546
+Variance of Performance: 59.65163535404929
+Standard Deviation: 7.723447116025932
+Confidence Interval: 37.420854396979585 to 40.87488495139133
+
+----------------------------------------
+Data set: BreastCancer
+
+Statistics for: Adaline
+Mean Performance: 95.27559055118111
+Variance of Performance: 1.736003472006951
+Standard Deviation: 1.3175748449355547
+Confidence Interval: 94.98097185930915 to 95.57020924305307
+
+Statistics for: Perceptron
+Mean Performance: 94.80314960629921
+Variance of Performance: 1.1408022816045564
+Standard Deviation: 1.0680834619094879
+Confidence Interval: 94.56431888365192 to 95.04198032894651
+
+Statistics for: Naive
+Mean Performance: 97.00787401574803
+Variance of Performance: 0.8432016864033743
+Standard Deviation: 0.9182601409205206
+Confidence Interval: 96.80254480613534 to 97.21320322536072
+
+Statistics for: Logistic
+Mean Performance: 81.57480314960631
+Variance of Performance: 3.1248062496124946
+Standard Deviation: 1.767712151231782
+Confidence Interval: 81.17953069612564 to 81.97007560308698
+
+----------------------------------------
+Data set: VoteCount
+
+Statistics for: Adaline
+Mean Performance: 94.43037974683543
+Variance of Performance: 9.357474763659663
+Standard Deviation: 3.0589989806568525
+Confidence Interval: 93.7463667804503 to 95.11439271322055
+
+Statistics for: Perceptron
+Mean Performance: 93.92405063291139
+Variance of Performance: 32.30251562249638
+Standard Deviation: 5.683530207757884
+Confidence Interval: 92.65317464323938 to 95.1949266225834
+
+Statistics for: Naive
+Mean Performance: 90.8860759493671
+Variance of Performance: 7.306521390802752
+Standard Deviation: 2.703057785324382
+Confidence Interval: 90.28165385385756 to 91.49049804487663
+
+Statistics for: Logistic
+Mean Performance: 87.84810126582278
+Variance of Performance: 8.07562890562412
+Standard Deviation: 2.8417651038789464
+Confidence Interval: 87.21266327098677 to 88.48353926065879
+
+----------------------------------------
+Data set: SoyBean
+
+Statistics for: Adaline
+Mean Performance: 98.0
+Variance of Performance: 16.0
+Standard Deviation: 4.0
+Confidence Interval: 97.10557280900008 to 98.89442719099992
+
+Statistics for: Perceptron
+Mean Performance: 92.5
+Variance of Performance: 100.0
+Standard Deviation: 10.0
+Confidence Interval: 90.26393202250021 to 94.73606797749979
+
+Statistics for: Naive
+Mean Performance: 92.5
+Variance of Performance: 100.0
+Standard Deviation: 10.0
+Confidence Interval: 90.26393202250021 to 94.73606797749979
+
+Statistics for: Logistic
+Mean Performance: 68.0
+Variance of Performance: 1696.0
+Standard Deviation: 41.182520563948
+Confidence Interval: 58.79130845342293 to 77.20869154657707
+
+----------------------------------------
+Data set: Iris
+
+Statistics for: Adaline
+Mean Performance: 88.2010582010582
+Variance of Performance: 30.111139105848075
+Standard Deviation: 5.487361761889595
+Confidence Interval: 86.9740468093864 to 89.42806959273001
+
+Statistics for: Perceptron
+Mean Performance: 87.48677248677248
+Variance of Performance: 30.987374373617747
+Standard Deviation: 5.566630432642151
+Confidence Interval: 86.2420360814718 to 88.73150889207317
+
+Statistics for: Naive
+Mean Performance: 91.87830687830687
+Variance of Performance: 35.354553343971325
+Standard Deviation: 5.945969504123893
+Confidence Interval: 90.5487476779707 to 93.20786607864305
+
+Statistics for: Logistic
+Mean Performance: 72.77777777777779
+Variance of Performance: 75.30864197530869
+Standard Deviation: 8.67805519545184
+Confidence Interval: 70.83730564482524 to 74.71824991073034
+
+----------------------------------------
+Data set: GlassID
+
+Statistics for: Adaline
+Mean Performance: 63.959899749373434
+Variance of Performance: 168.6459255909196
+Standard Deviation: 12.986374613067328
+Confidence Interval: 61.056058107763825 to 66.86374139098304
+
+Statistics for: Perceptron
+Mean Performance: 59.67418546365915
+Variance of Performance: 104.60612684593691
+Standard Deviation: 10.227713666599046
+Confidence Interval: 57.38719916236724 to 61.96117176495106
+
+Statistics for: Naive
+Mean Performance: 56.74185463659148
+Variance of Performance: 4.788914642495955
+Standard Deviation: 2.188358892525619
+Confidence Interval: 56.25252271230614 to 57.23118656087683
+
+Statistics for: Logistic
+Mean Performance: 37.56892230576441
+Variance of Performance: 4.883135156186206
+Standard Deviation: 2.209781698762619
+Confidence Interval: 37.074800096377594 to 38.063044515151226
+
+----------------------------------------
+Data set: BreastCancer
+
+Statistics for: Adaline
+Mean Performance: 94.96062992125985
+Variance of Performance: 6.5968131936264
+Standard Deviation: 2.5684262094960797
+Confidence Interval: 94.38631236129731 to 95.53494748122239
+
+Statistics for: Perceptron
+Mean Performance: 94.96062992125984
+Variance of Performance: 0.3968007936015848
+Standard Deviation: 0.6299212598425178
+Confidence Interval: 94.81977524551182 to 95.10148459700785
+
+Statistics for: Naive
+Mean Performance: 97.00787401574803
+Variance of Performance: 0.8432016864033743
+Standard Deviation: 0.9182601409205206
+Confidence Interval: 96.80254480613534 to 97.21320322536072
+
+Statistics for: Logistic
+Mean Performance: 83.30708661417324
+Variance of Performance: 15.227230454460884
+Standard Deviation: 3.902208407358695
+Confidence Interval: 82.43452628805072 to 84.17964694029577
+
+----------------------------------------
+Data set: VoteCount
+
+Statistics for: Adaline
+Mean Performance: 92.65822784810126
+Variance of Performance: 19.48405704214067
+Standard Deviation: 4.414074879534858
+Confidence Interval: 91.67121069925985 to 93.64524499694268
+
+Statistics for: Perceptron
+Mean Performance: 94.17721518987342
+Variance of Performance: 26.662393847139867
+Standard Deviation: 5.163564064397756
+Confidence Interval: 93.02260716445657 to 95.33182321529027
+
+Statistics for: Naive
+Mean Performance: 90.8860759493671
+Variance of Performance: 7.306521390802752
+Standard Deviation: 2.703057785324382
+Confidence Interval: 90.28165385385756 to 91.49049804487663
+
+Statistics for: Logistic
+Mean Performance: 87.08860759493669
+Variance of Performance: 3.4609838166960407
+Standard Deviation: 1.8603719565441854
+Confidence Interval: 86.67261577910998 to 87.5045994107634
+
+----------------------------------------
+Data set: Iris
+
+Statistics for: Adaline
+Mean Performance: 94.1005291005291
+Variance of Performance: 25.36043223873909
+Standard Deviation: 5.035914240606078
+Confidence Interval: 92.97446444344367 to 95.22659375761454
+
+Statistics for: Perceptron
+Mean Performance: 90.52910052910053
+Variance of Performance: 48.778029730410694
+Standard Deviation: 6.984126984126985
+Confidence Interval: 88.96740225910068 to 92.09079879910038
+
+Statistics for: Naive
+Mean Performance: 91.87830687830687
+Variance of Performance: 35.354553343971325
+Standard Deviation: 5.945969504123893
+Confidence Interval: 90.5487476779707 to 93.20786607864305
+
+Statistics for: Logistic
+Mean Performance: 71.93121693121694
+Variance of Performance: 110.27406847512675
+Standard Deviation: 10.501146055318284
+Confidence Interval: 69.5830892890824 to 74.27934457335148
+
+----------------------------------------
+Data set: BreastCancer
+
+Statistics for: Adaline
+Mean Performance: 94.17322834645668
+Variance of Performance: 6.348812697625398
+Standard Deviation: 2.519685039370079
+Confidence Interval: 93.60980964346462 to 94.73664704944875
+
+Statistics for: Perceptron
+Mean Performance: 94.1732283464567
+Variance of Performance: 7.340814681629363
+Standard Deviation: 2.7093937848953153
+Confidence Interval: 93.56738947837256 to 94.77906721454083
+
+Statistics for: Naive
+Mean Performance: 97.00787401574803
+Variance of Performance: 0.8432016864033743
+Standard Deviation: 0.9182601409205206
+Confidence Interval: 96.80254480613534 to 97.21320322536072
+
+Statistics for: Logistic
+Mean Performance: 83.77952755905511
+Variance of Performance: 8.828817657635298
+Standard Deviation: 2.9713326400178253
+Confidence Interval: 83.11511738237074 to 84.44393773573948
+
+----------------------------------------

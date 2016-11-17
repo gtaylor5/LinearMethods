@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 public class AdalineNeuron {
     Integer classVal;
@@ -31,9 +32,10 @@ public class AdalineNeuron {
     
     /************************************************************
     Train neuron based on class value.
+     * @throws IOException 
     ************************************************************/
     
-    public void train(){
+    public void train() throws IOException{
         initializeWeights(); // intialize weights to random number vector
         double[] weightsCopy = weights;
         double performance = Double.MIN_VALUE;
@@ -43,13 +45,13 @@ public class AdalineNeuron {
             weightsCopy = weights;
             for(int[] arr : trainingData){
                double y = sgn(weights, arr);
-                if(arr[arr.length-1] == classVal){
+                if(arr[arr.length-1] == classVal){ // positive example
                     double target = 1;
                     double error = (target - y);
                     for(int i = 0; i < weights.length; i++){
                         weights[i] += eta*error*((double)arr[i]);
                     }
-                }else{
+                }else{ // negative example
                     double target = -1;
                     double error = (target - y);
                     for(int i = 0; i < weights.length; i++){
@@ -63,14 +65,6 @@ public class AdalineNeuron {
             }
         }
         weights = weightsCopy;
-    }
-    
-    double getSumOfErrors(double[] err){
-        double sum = 0;
-        for(double val: err){
-            sum+=val;
-        }
-        return sum;
     }
     
     /************************************************************
@@ -97,13 +91,6 @@ public class AdalineNeuron {
         return sum;
     }
     
-    double dotScalar(double err, int[] arr) {
-        double sum = 0;
-        for(int i = 0; i < weights.length; i++){
-            sum += err*((double)arr[i]);
-        }
-        return sum;
-    }
 
     /************************************************************
     tests performance of learned weights against a validation set.

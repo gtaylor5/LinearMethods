@@ -1,5 +1,7 @@
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 
 class Main{
@@ -17,25 +19,79 @@ class Main{
     public Main(String name){
       this.dataSetName = name;
     }
-  
+    
+    static PrintWriter writer2;
   
     public static void main(String[] args) throws IOException{
       String[] dataSets = {"SoyBean","Iris","GlassID","BreastCancer","VoteCount"};
-      for(int i = 0; i < dataSets.length; i++){
-          System.out.println(dataSets[i]);
-        for(int j = 1; j < 6; j++){
-          System.out.println("Fold #: "+j);
+      writer2 = new PrintWriter(new FileWriter("LinearModels.txt", true));
+      for(int i = 0; i < dataSets.length; i++){ //Change this line to see the other learned models for the other data sets.
+          if(i == 1 || i == 3){
+          writer2.println(dataSets[i]);
+          writer2.println();
           Main m = new Main(dataSets[i]);
+        for(int j = 1; j < 6; j++){
+          writer2.println("Fold #: "+j);
+          writer2.println();
           m.fillTestFile(j);
           m.fillTrainFile(j);
           m.fillValidationSet();
           m.test();
-          System.out.println();
+          m.reset();
+          writer2.println();
         }
-        System.out.println("-------------------");
+        m.writeStatistics();
+        writer2.println("-------------------");
+      }
       }
     }
+    
+    public void writeStatistics() throws IOException{
+        PrintWriter writer = new PrintWriter(new FileWriter("StatisticalResults.txt",true));
+        
+        HashMap<String,ArrayList<Double>> arr = new HashMap<String,ArrayList<Double>>();
+        arr.put("Naive",naivePerformance);
+        arr.put("Logistic",logisticPerformance);
+        arr.put("Perceptron",perceptronPerformance);
+        arr.put("Adaline",adalinePerformance);
+        
+        writer.println("Data set: " + this.dataSetName);
+        writer.println();
+        for(String key : arr.keySet()){
+            writer.println("Statistics for: " + key);
+            writer.println("Mean Performance: " + mean(arr.get(key)));
+            writer.println("Variance of Performance: " + variance(arr.get(key)));
+            writer.println("Standard Deviation: "+ Math.sqrt(variance(arr.get(key))));
+            double standardError = Math.sqrt(variance(arr.get(key)))/Math.sqrt(arr.get(key).size());
+            double margin = standardError/2.0;
+            writer.println("Confidence Interval: " + (mean(arr.get(key))-margin) + " to " + (mean(arr.get(key))+margin));
+            writer.println();
+        }
+        writer.println("----------------------------------------");
+        writer.close();
+    }
+    
+    double variance(ArrayList<Double> arr){
+        double sum = 0;
+        for(Double val: arr){
+            sum+=Math.pow(val-mean(arr),2);
+        }
+        return sum/((double) arr.size());
+    }
+    
+    double mean(ArrayList<Double> arr){
+        double sum = 0;
+        for(Double val : arr){
+            sum+=val;
+        }
+        return sum/((double)arr.size());
+    }
   
+    void reset(){
+        this.testData.removeAll(testData);
+        this.trainingData.removeAll(trainingData);
+        this.validationSet.removeAll(validationSet);
+    }
   
     void test() throws IOException{
     
@@ -49,10 +105,10 @@ class Main{
       l.countClasses();
       l.initializeClasses();
       l.gradientDescent();
-      System.out.printf("Logistic : %.2f", l.test()*100);
-      System.out.print(" %");
-      System.out.println();
-      logisticPerformance.add(l.test*100);
+      writer2.println("Logistic : ");
+      l.printWeights();
+      writer2.println();
+      logisticPerformance.add(l.test()*100);
     
       //Naive Bayes
     
@@ -63,7 +119,10 @@ class Main{
       for(int key : b.classCounts.keySet()){
         b.trainNaiveBayes(b.trainingData, key);
       }
-      naivePerformace.add(b.testNaiveBayes(testData));
+      writer2.println("Naive Bayes : ");
+      b.printProbabilities();
+      writer2.println();
+      naivePerformance.add(b.testNaiveBayes(testData));
     
       //Perceptron Learning 
     
@@ -75,6 +134,9 @@ class Main{
       p.countClasses();
       p.setNeurons();
       p.trainPerceptron();
+      writer2.println("Perceptron : ");
+      p.printWeights();
+      writer2.println();
       perceptronPerformance.add(p.testPerceptron());
     
       //Adaline Learning
@@ -87,6 +149,9 @@ class Main{
       a.countClasses();
       a.setNeurons();
       a.trainAdaline();
+      writer2.println("Adaline : ");
+      a.printWeights();
+      writer2.println();
       adalinePerformance.add(a.testAdaline());
     }
 

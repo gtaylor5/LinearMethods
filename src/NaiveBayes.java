@@ -58,6 +58,18 @@ public class NaiveBayes {
 		classNumbers.add(classNum);
 	}
 	
+	public void printProbabilities(){
+	    for(Classification c : classifications){
+	        Main.writer2.println("Probability for Class " + c.classNumber + " : " + c.classProbability);
+	        Main.writer2.print("Attribute Probabilities for Class " + c.classNumber + " : ");
+	        for(double probs : c.attributeProbabilities){
+	            Main.writer2.print(probs + " ");
+	        }
+	        Main.writer2.println();
+	        Main.writer2.println();
+	    }
+	}
+	
 	/************************************************************
 	
 	method tests naive bayes algorithm.
@@ -65,7 +77,7 @@ public class NaiveBayes {
 	
 	************************************************************/
 	
-	public double testNaiveBayes(ArrayList<int[]> testSet) throws IOException{
+	public Double testNaiveBayes(ArrayList<int[]> testSet) throws IOException{
 		for(int i = 0; i < classifications.size(); i++){
 			for(int j = 0; j < classifications.get(i).attributeProbabilities.length; j++){
 			}
@@ -96,9 +108,6 @@ public class NaiveBayes {
 				totalCount++;
 			}
 		}
-		System.out.printf("Naive Bayes : %.2f",(count/totalCount)*100);
-        	System.out.print(" %");
-		System.out.println();
 		return ((double)(count/totalCount)*100);
 	}
 	

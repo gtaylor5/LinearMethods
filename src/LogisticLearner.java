@@ -315,6 +315,17 @@ public class LogisticLearner {
 		fileScanner.close();
 	}
 	
+	void printWeights(){
+	    for(ClassInfo c : classes){
+	        Main.writer2.print("Weights for Class " + c.classVal + " : ");
+	        for(double val : c.weights){
+	            Main.writer2.print(val + " ");
+	        }
+	        Main.writer2.println();
+	        Main.writer2.println();
+	    }
+	}
+	
 	/************************************************************
 	
 	Helper Class. 
